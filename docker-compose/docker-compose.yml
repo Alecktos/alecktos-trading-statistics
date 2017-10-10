@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ../backend:/backend
+            - ../frontend/client:/frontend_client
+            - ./site.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+          - frontend
+    php:
+        image: php:fpm
+        volumes:
+            - ../backend:/backend
+            - ./log.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+            - ../resources:/stock
+            - ../resources:/trades
+    frontend:
+        build:
+            context: ./docker-frontend
+        ports:
+            - "8080:8080"
+        volumes:
+            - ../frontend:/frontend
