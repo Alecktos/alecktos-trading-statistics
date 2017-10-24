@@ -15,5 +15,3 @@ Build docker: docker-compose build
 ## Prod
 Run prod environment: docker-compose up
  
-react-stock documentation: http://rrag.github.io/react-stockcharts/index.html
- 
