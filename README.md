@@ -13,5 +13,5 @@ Run frontend dev application: npm run dev
 Build docker: docker-compose build
  
 ## Prod
-Run prod environment: docker-compose up
+Run prod environment: docker-compose up -d
  
