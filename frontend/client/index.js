@@ -11,7 +11,7 @@ import TradingChart from './components/tradingchart/tradingchart.view';
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route path="/:stock" component={TradingChart} />
+			<Route path="/:date/:stock" component={TradingChart} />
 			<Route exact path="/" component={TradingChart} />
 			<Route path="/example" component={TradesView} />
 		</div>

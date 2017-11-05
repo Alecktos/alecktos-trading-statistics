@@ -19,10 +19,14 @@ function run() {
 		$requestArray =  explode("/", $request);
 
 		$resource = $requestArray[1];
-		$id = null;
-		if(isset($requestArray[2])) {
-			$id = $requestArray[2];
+		$idParts = [];
+
+		$requestArrayLength = count($requestArray);
+		for($i = 2; $i < $requestArrayLength; $i++) {
+			$idParts[] = $requestArray[$i];
 		}
+
+		$id = implode("/", $idParts);
 
 		//Decode JSON string to array
 		$data = json_decode(file_get_contents("php://input"), true);
