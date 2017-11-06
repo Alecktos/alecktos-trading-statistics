@@ -1,4 +1,4 @@
-import ajax from "../ajax";
+import ajax from "./ajax";
 
 export function getBuys	(id) {
 	return ajax.get(`/api/buys/${id}`)

@@ -25,41 +25,41 @@ class D3Chart extends React.Component {
 	}
 
 	createChart() {
-		var svg = d3.select(this.node),
+		let svg = d3.select(this.node),
 			margin = {top: 20, right: 20, bottom: 110, left: 40},
 			margin2 = {top: 430, right: 20, bottom: 30, left: 40},
 			width = +svg.attr("width") - margin.left - margin.right,
 			height = +svg.attr("height") - margin.top - margin.bottom,
 			height2 = +svg.attr("height") - margin2.top - margin2.bottom;
 
-		//var parseDate = d3.timeParse("%b %Y");
+		//let parseDate = d3.timeParse("%b %Y");
 
-		var x = d3.scaleTime().range([0, width]),
+		let x = d3.scaleTime().range([0, width]),
 			x2 = d3.scaleTime().range([0, width]),
 			y = d3.scaleLinear().range([height, 0]),
 			y2 = d3.scaleLinear().range([height2, 0]);
 
-		var xAxis = d3.axisBottom(x),
+		let xAxis = d3.axisBottom(x),
 			xAxis2 = d3.axisBottom(x2),
 			yAxis = d3.axisLeft(y);
 
-		var brush = d3.brushX()
+		let brush = d3.brushX()
 			.extent([[0, 0], [width, height2]])
 			.on("brush end", brushed);
 
-		var zoom = d3.zoom()
+		let zoom = d3.zoom()
 			.scaleExtent([1, Infinity])
 			.translateExtent([[0, 0], [width, height]])
 			.extent([[0, 0], [width, height]])
 			.on("zoom", zoomed);
 
-		var area = d3.area()
+		let area = d3.area()
 			.curve(d3.curveMonotoneX)
 			.x(function(d) { return x(d.date); })
 			.y0(height)
 			.y1(function(d) { return y(d.price); });
 
-		var area2 = d3.area()
+		let area2 = d3.area()
 			.curve(d3.curveMonotoneX)
 			.x(function(d) { return x2(d.date); })
 			.y0(height2)
@@ -71,11 +71,11 @@ class D3Chart extends React.Component {
 			.attr("width", width)
 			.attr("height", height);
 
-		var focus = svg.append("g")
+		let focus = svg.append("g")
 			.attr("class", "focus")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		var context = svg.append("g")
+		let context = svg.append("g")
 			.attr("class", "context")
 			.attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 

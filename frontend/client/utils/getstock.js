@@ -1,4 +1,4 @@
-import ajax from "../ajax";
+import ajax from "./ajax";
 
 function parsePoint(point) {
 	point.date = new Date(point.timestamp);

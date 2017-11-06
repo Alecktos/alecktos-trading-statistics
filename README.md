@@ -7,6 +7,10 @@ It's using three docker containers; A PHP, node and a nginx proxying the data.
 ## Dev
 	dev environment: docker-compose up [--force-recreate]
 Go to 0.0.0.0 for accessing your environment
+
+### Example
+	http://0.0.0.0/11-05-2017/disney_1_day
+
 ### Misc
 Run frontend dev application: npm run dev
 
