@@ -31,7 +31,7 @@ function addCloseValues(nextValue, initialPreviousValue) {
 	return values;
 }
 
-export default function(id) {
+export function getStock(id) {
 
 	return ajax.get(`/api/stock/${id}`)
 		.then((result) => {
@@ -44,4 +44,8 @@ export default function(id) {
 
 			return Promise.resolve(result.points);
 	});
+}
+
+export function getStocks() {
+	return ajax.get(`/api/stock/`);
 }

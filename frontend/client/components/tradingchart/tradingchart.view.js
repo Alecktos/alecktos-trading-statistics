@@ -1,6 +1,6 @@
 import React from 'react';
 import TradingChart from './trading.chart';
-import getStock from "../../utils/getstock";
+import { getStock } from "../../utils/getstock";
 import { getBuys, getSells } from "../../utils/gettrades";
 import PropTypes from 'prop-types';
 
