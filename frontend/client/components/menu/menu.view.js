@@ -26,7 +26,7 @@ export default class MenuView extends React.Component {
 
 		console.log('stugg');
 		return <div> {this.state.stocks.map(stock => {
-			return <div><a href="{}">{stock}</a></div>
+			return <div><a href={stock}>{stock}</a></div>
 		})} </div>
 	}
 }

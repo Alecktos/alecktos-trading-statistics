@@ -17,7 +17,7 @@ export default class AreaChartView extends React.Component {
 	}
 
 	componentDidMount() {
-		const id =  `${this.props.match.params.date}/${this.props.match.params.stock}`;
+		const id =  `${this.props.match.params.stock}`;
 		Promise.all([getStock(id), getBuys(id), getSells(id)]).then((results) => {
 			this.setState({
 				stock: results[0],

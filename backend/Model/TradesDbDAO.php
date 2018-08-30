@@ -5,13 +5,14 @@ namespace Model;
 
 use PDO;
 use Support\ApplicationException;
+use Support\Env;
 
 class TradesDbDAO {
 
 	private $db;
 
-	function __construct($tradingRobotDb) {
-		$filePath = '/trades/' . $tradingRobotDb . '.db';
+	function __construct($stock) {
+		$filePath = Env::RESOURCES_PATH . $stock . '/database.db';
 		if(!file_exists($filePath)) {
 			throw new ApplicationException("Could not find database file");
 		}

@@ -11,7 +11,7 @@ import Menu from './components/menu/menu.view';
 ReactDOM.render(
 	<Router>
 		<div>
-			<Route path="/:date/:stock" component={TradingChart} />
+			<Route path="/:stock" component={TradingChart} />
 			<Route exact path="/" component={Menu} />
 		</div>
 	</Router>,

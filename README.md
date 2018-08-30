@@ -19,3 +19,12 @@ Build docker: docker-compose build
 ## Prod
 Run prod environment: docker-compose up -d
  
+## Resources
+create a new dir for each stock with a stock file and trades database in each dir.
+
+Example:
+
+	-> resources
+	  -> disney
+	    -> database.db
+	    -> price.txt

@@ -4,11 +4,10 @@ namespace Controller;
 
 use Model\Stock;
 use Support\ApplicationException;
+use Support\Env;
 use Support\Response;
 
 class StockController extends Controller {
-
-	const stocks_dir = '/stock/';
 
 	public function doGet(string $id): Response {
 		if($id) {
@@ -18,7 +17,7 @@ class StockController extends Controller {
 	}
 
 	private function getStock(string $id): Response {
-		$filePath = self::stocks_dir . $id . '.txt';
+		$filePath = Env::RESOURCES_PATH . $id . '/price.txt';
 		if(!file_exists($filePath)) {
 			throw new ApplicationException("Could not find file");
 		}
@@ -31,9 +30,14 @@ class StockController extends Controller {
 	}
 
 	private function availableStocks(): Response {
-		$dir = scandir(self::stocks_dir);
-		$dir = array_filter($dir, function ($file) {
-			return substr($file, 0, 1) != '.';
+		$dir = scandir(Env::RESOURCES_PATH);
+		$dir = array_filter($dir, function ($path) {
+			$hidden = substr($path, 0, 1) == '.';
+			if($hidden) {
+				return false;
+			}
+
+			return is_dir(Env::RESOURCES_PATH . $path);
 		});
 		return $this->respond(json_encode(array_values($dir)));
 	}
